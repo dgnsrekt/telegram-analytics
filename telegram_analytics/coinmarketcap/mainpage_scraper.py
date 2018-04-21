@@ -26,5 +26,3 @@ def getLinks(limit=None):
         pages[name] = link
 
     return pages
-
-print(len(getLinks()))
