@@ -9,8 +9,7 @@ def getLinks(limit=None):
 
     if not limit:
         stats = cap.stats()
-        active_crypto = stats['active_currencies'] + stats['active_assets']
-        limit = active_crypto
+        limit = stats['active_currencies'] + stats['active_assets']
 
     data = cap.ticker(limit=limit)
 
