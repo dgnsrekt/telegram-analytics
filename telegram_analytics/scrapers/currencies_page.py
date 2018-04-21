@@ -48,8 +48,3 @@ def parseCoinPageLinks(url):
         websites, telegram_links))
 
     return {'websites': websites, 'telegram_links': telegram_links}
-
-url = 'https://coinmarketcap.com/currencies/tron/'
-url = 'https://coinmarketcap.com/currencies/waltonchain/'
-x = parseCoinPageLinks(url)
-print(x)
