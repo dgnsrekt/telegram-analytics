@@ -18,10 +18,6 @@ def getLinks(limit=None):
         name = coin['id']
         link = url.format(coin['id'])
 
-        # print()
-        # print('=' * 10)
-        # print(name, link)
-
         pages[name] = link
 
     return pages
