@@ -12,6 +12,11 @@ name = "pypi"
 [packages]
 
 pytest = "*"
+pandas = "*"
+matplotlib = "*"
+requests-html = "*"
+peewee = "*"
+coinmarketcap = "*"
 
 
 [requires]
