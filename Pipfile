@@ -17,6 +17,7 @@ matplotlib = "*"
 requests-html = "*"
 peewee = "*"
 coinmarketcap = "*"
+pytest-watch = "*"
 
 
 [requires]
