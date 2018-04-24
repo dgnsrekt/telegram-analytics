@@ -4,8 +4,6 @@ from time import sleep
 
 import logging
 
-# logging.basicConfig(level=logging.DEBUG)
-
 
 def elementIsWebsite(element):
     return element.attrs['title'] == 'Website'
@@ -18,6 +16,8 @@ def isValidTelegramLink(link):
         return True
     elif 'http://www.telegram.me/' in link:
         return True
+    else:
+        return False
 
 
 # TODO: retry decorator that sleeps and retrys using audacity
@@ -54,8 +54,6 @@ def parseCoinsMainPageTelegramLinks(_link):
 
 
 # TODO: retry decorator that sleeps and retrys using audacity
-
-
 def parseCoinPageLinks(url):
     telegram_links = set()
     websites = set()
