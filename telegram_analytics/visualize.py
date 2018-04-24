@@ -1,4 +1,4 @@
-from model import Telegram
+from models.telegram_model import Telegram
 from scrapers.telegram import parseMemberCount
 from scrapers.mainpage import getAllMarkets
 from utils.timeit import timeit
@@ -18,7 +18,7 @@ def main():
 
     df2 = pd.DataFrame(getAllMarkets())
     df2.set_index('id', inplace=True)
-    rslt = pd.concat([df, df2], axis=1, join_axes=[df.index])
+    rslt = pd.concat([df, df2], axis=1, join_axes=[df.index]).head(5)
 
     def f(x):
         sleep(0.01)
@@ -52,6 +52,7 @@ def main():
     plt.scatter(x, y3, c=y3)
     plt.xlabel('Telegram Followers')
     plt.ylabel('Percent Change (7d)')
+
 
 fig = plt.figure(figsize=(18, 9))
 main()

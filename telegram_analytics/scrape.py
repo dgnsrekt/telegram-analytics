@@ -3,7 +3,7 @@ import logging
 from scrapers.currencies_page import parseCoinPageLinks
 from scrapers.mainpage import getLinks
 from utils.timeit import timeit
-from model import Telegram, createTables, dropTables
+from models.telegram_model import Telegram, cleanTelegramTables
 
 logging.basicConfig(level=logging.INFO)
 
@@ -45,6 +45,7 @@ def debug_test():
     createTables()
 
     Telegram.addData(parsed)
+
 
 if __name__ == '__main__':
     # dropTables()
