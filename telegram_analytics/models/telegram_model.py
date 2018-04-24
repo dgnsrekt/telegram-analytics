@@ -3,19 +3,11 @@ import logging
 
 from datetime import datetime
 from peewee import *
-
-
-db = PostgresqlDatabase('telegram')
+from .base_model import BaseModel, db
 
 
 def getCurrentDateTime():
     return datetime.utcnow()
-
-
-class BaseModel(Model):
-
-    class Meta:
-        database = db
 
 
 class Telegram(BaseModel):
@@ -45,11 +37,16 @@ class Telegram(BaseModel):
         return df
 
 
-def createTables():
+def createTelegramTables():
     db.create_tables([Telegram])
     logging.info('Tables Created')
 
 
-def dropTables():
+def dropTelegramTables():
     db.drop_tables([Telegram])
     logging.info('Tables Dropped')
+
+
+def cleanTelegramTables():
+    dropTelegramTables()
+    createTelegramTables()
