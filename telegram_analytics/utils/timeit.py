@@ -3,10 +3,8 @@ import logging
 
 from datetime import timedelta
 
-logging.basicConfig(level=logging.DEBUG)
 
-
-def pretty_time_delta(seconds):
+def prettyTimeDelta(seconds):
     seconds = int(seconds)
 
     days, seconds = divmod(seconds, 86400)
@@ -29,8 +27,8 @@ def timeit(method):
         result = method(*args, **kw)
         end = time.time()
 
-        delta = pretty_time_delta(end - start)
-        logging.info('{} FUNCTION TIME: {}'.format(
+        delta = prettyTimeDelta(end - start)
+        logging.info('{} FUNCTION TOOK {} TO COMPLETE.'.format(
             method.__name__.upper(), delta))
         return result
     return timed
