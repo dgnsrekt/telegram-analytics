@@ -18,6 +18,8 @@ requests-html = "*"
 peewee = "*"
 coinmarketcap = "*"
 pytest-watch = "*"
+"psycopg2" = "*"
+"psycopg2-binary" = "*"
 
 
 [requires]
