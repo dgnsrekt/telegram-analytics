@@ -20,6 +20,7 @@ coinmarketcap = "*"
 pytest-watch = "*"
 "psycopg2" = "*"
 "psycopg2-binary" = "*"
+schedule = "*"
 
 
 [requires]
