@@ -16,6 +16,14 @@ class TelegramMembers(BaseModel):
     name = CharField(null=True)
     telegram_link = ForeignKeyField(Telegram, to_field='telegram_link')
     members = BigIntegerField(null=True)
+
+    price_usd = DecimalField(max_digits=19, decimal_places=6, null=True)
+    # Satoshi will be multiplied by 100,000,000
+    price_btc = BigIntegerField(null=True)
+
+    volume = BigIntegerField(null=True)
+    marketcap = BigIntegerField(null=True)
+
     created_date = DateTimeField()
 
     def addData(**kwargs):
