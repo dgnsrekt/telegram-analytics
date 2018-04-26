@@ -6,7 +6,7 @@ from scrapers.telegram import parseMemberCount
 from scrapers.mainpage import getAllMarkets, getCoinData
 from utils.timeit import timeit
 from utils.schedule_logger import with_logging
-from utils.utilities import *
+from utils.coindata import CoinData
 
 from datetime import datetime
 from time import sleep, time
@@ -38,22 +38,15 @@ def sample_telegram_member_count(tail=None):
         link = row[1]['telegram_link']
         members = parseMemberCount(link)
 
-        coinmarketcap_data = getCoinData(name)
-        print(coinmarketcap_data.get('market_cap_usd', 0))
-        print('vol', coinmarketcap_data.get('24h_volume_usd', 0))
-
-        price_usd = str_dec_conv(coinmarketcap_data.get('price_usd', 0))
-        price_btc = btc(coinmarketcap_data.get('price_btc', 0))
-        volume = str_dec_int_conv(coinmarketcap_data.get('24h_volume_usd', 0))
-        marketcap = str_dec_int_conv(coinmarketcap_data.get('market_cap_usd', 0))
+        coin_data = CoinData(name)
 
         data = {'name': name,
                 'telegram_link': link,
                 'members': members,
-                'price_usd': price_usd,
-                'price_btc': price_btc,
-                'volume': volume,
-                'marketcap': marketcap,
+                'price_usd': coin_data.price_usd,
+                'price_btc': coin_data.price_btc,
+                'volume': coin_data.volume,
+                'marketcap': coin_data.marketcap,
                 'created_date': created_date}
 
         TelegramMembers.addData(**data)
@@ -76,5 +69,6 @@ if __name__ == '__main__':
     # DEBUG DELETE WHEN DONE
     # cleanTelegramMembersTables()
     # sample_telegram_member_count(tail=10)
+    # sample_telegram_member_count()
     # main()
     pass
