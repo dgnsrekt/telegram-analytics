@@ -12,13 +12,13 @@ def prettyTimeDelta(seconds):
     minutes, seconds = divmod(seconds, 60)
 
     if days > 0:
-        return '{:d}d{:d}h{:d}m{:d}s'.format(days, hours, minutes, seconds)
+        return f'{days:}d{hours:}h{minutes:}m{seconds:}s'
     elif hours > 0:
-        return '{:d}h{:d}m{:d}s'.format(hours, minutes, seconds)
+        return f'{hours:}h{minutes:}m{seconds:}s'
     elif minutes > 0:
-        return '{:d}m{:d}s'.format(minutes, seconds)
+        return f'{minutes:}m{seconds:}s'
     else:
-        return '{:d}s'.format(seconds,)
+        return f'{seconds:}s'
 
 
 def timeit(method):
