@@ -25,3 +25,12 @@ def getLinks(limit=None):
         pages[name] = link
 
     return pages
+
+
+def getCoinData(coin):
+    cap = Market()
+
+    data = cap.ticker(coin)
+    if data == {'error': 'id not found'}:
+        return None
+    return data[0]
