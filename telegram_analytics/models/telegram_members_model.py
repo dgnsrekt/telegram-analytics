@@ -23,6 +23,18 @@ class TelegramMembers(BaseModel):
 
         logging.info('New entry {} added to database.'.format(kwargs['name']))
 
+    def getAllData():
+        data = [[row.name, row.members, row.created_date]
+                for row in TelegramMembers.select()]
+        df = pd.DataFrame(data, columns=['name', 'members', 'date'])
+        return data
+
+    def pickleAllData(filename):
+        data = [[row.name, row.members, row.created_date]
+                for row in TelegramMembers.select()]
+        df = pd.DataFrame(data, columns=['name', 'members', 'date'])
+        df.to_pickle(filename)
+
 
 def createTelegramMembersTables():
     db.create_tables([TelegramMembers])
