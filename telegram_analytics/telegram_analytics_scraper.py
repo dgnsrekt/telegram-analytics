@@ -16,11 +16,12 @@ def main():
 
     schedule.every().day.at('00:30').do(run_threaded, get_telegram_links)
     schedule.every().day.at('12:30').do(run_threaded, get_telegram_links)
-    schedule.every().day.at('15:15').do(run_threaded, sample_telegram_member_count)  # debug
+    # schedule.every().day.at('17:00').do(run_threaded, get_telegram_links)  # debugger
 
     for idx in range(24):
         time = '{:02d}:00'.format(idx)
         schedule.every().day.at(time).do(run_threaded, sample_telegram_member_count)
+    logging.info('running...')
 
     while True:
         schedule.run_pending()
