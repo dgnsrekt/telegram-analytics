@@ -8,7 +8,7 @@ from time import sleep
 
 import schedule
 import logging
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
 
 
 @timeit
