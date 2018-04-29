@@ -35,13 +35,28 @@ class TelegramMembers(BaseModel):
         data = [[row.name, row.members, row.created_date]
                 for row in TelegramMembers.select()]
         df = pd.DataFrame(data, columns=['name', 'members', 'date'])
-        return data
+        return df
 
     def pickleAllData(filename):
         data = [[row.name, row.members, row.created_date]
                 for row in TelegramMembers.select()]
         df = pd.DataFrame(data, columns=['name', 'members', 'date'])
         df.to_pickle(filename)
+
+    def getAllDates():
+        dates = TelegramMembers.created_date
+        descending_order = TelegramMembers.created_date.desc()
+        query = TelegramMembers.select(dates).distinct().order_by(descending_order)
+        return [row.created_date for row in query]
+
+    def getDataBetweenDateRange(start, end):
+        date_range = TelegramMembers.created_date.between(start, end)
+        query = TelegramMembers.select().where(date_range)
+        data = [[row.name, row.members, row.price_usd, row.price_btc, row.volume, row.marketcap, row.created_date]
+                for row in query]
+        df = pd.DataFrame(data, columns=['name', 'members', 'price_usd',
+                                         'price_btc', 'volume', 'marketcap', 'date'])
+        return df
 
 
 def createTelegramMembersTables():
