@@ -22,6 +22,7 @@ pytest-watch = "*"
 "psycopg2-binary" = "*"
 schedule = "*"
 scipy = "*"
+sklearn = "*"
 
 
 [requires]
